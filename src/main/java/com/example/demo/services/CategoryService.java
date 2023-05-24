@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.entity.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.entity.Category;
@@ -22,6 +23,12 @@ public class CategoryService {
         }
     }
     public Category saveCategory(Category category) { return categoryRepository.save(category); }
+    public void addCategory(Category category) {
+        categoryRepository.save(category);
+    }
+    public void updateCategory(Category category) {
+        categoryRepository.save(category);
+    }
     public void deleteCategory(Long id) { categoryRepository.deleteById(id); }
 }
 
