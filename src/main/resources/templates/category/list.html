@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      lang="en">
 <head>
     <meta charset="UTF-8">
     <title>My Category List</title>
@@ -10,12 +12,13 @@
 <div class="container">
     <h1 th:text=${title}></h1>
     <table class="table">
-        <tr>
+        <tr sec:authorize="hasAnyAuthority('ADMIN')">
             <th>ID</th>
             <th>Name</th>
             <th>Action</th>
         </tr>
-        <tr th:each="category : ${categories}">
+        <tr     sec:authorize="hasAnyAuthority('ADMIN')"
+                th:each="category : ${categories}">
             <td th:text="${category.id}"></td>
             <td th:text="${category.name}"></td>
             <td>
